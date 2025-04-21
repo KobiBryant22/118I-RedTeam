@@ -1,0 +1,140 @@
+import streamlit as st
+import pandas as pd
+import openai
+from datetime import datetime
+
+
+# Load Data
+schedule_df = pd.read_csv("Park_schedule.csv")
+amenities_df = pd.read_csv("Park_amenities.csv")
+log_df = pd.read_csv("reservations_log.csv")
+
+
+# Remove stray header rows if duplicated
+schedule_df = schedule_df[schedule_df["date"] != "date"]
+
+
+# Convert date column to datetime format
+schedule_df["date"] = pd.to_datetime(schedule_df["date"], errors='coerce')
+
+
+# Set Page
+st.set_page_config(page_title="City Connect", layout="centered")
+st.markdown("# 🌟 City Connect")
+
+
+# ------------------- Contact Info -------------------
+st.subheader("👨‍💼 Your Contact Information")
+name = st.text_input("Full Name")
+email = st.text_input("Email Address")
+phone = st.text_input("Phone Number")
+
+
+# ------------------- Reservation -------------------
+st.subheader("📍 Reservation Details")
+parks = schedule_df["park_name"].unique()
+selected_park = st.selectbox("Choose a park:", parks)
+
+
+available_dates = schedule_df[(schedule_df["park_name"] == selected_park) & (schedule_df["status"] == "available")]["date"].dt.date.unique()
+selected_date = st.date_input("Choose a date:", min_value=datetime.now().date())
+
+
+available_slots = schedule_df[(schedule_df["park_name"] == selected_park) & (schedule_df["date"].dt.date == selected_date) & (schedule_df["status"] == "available")]["time_slot"].unique()
+selected_slot = st.selectbox("Choose a time slot:", available_slots if len(available_slots) > 0 else ["No options available"])
+
+
+if st.button("✅ Book Now") and selected_slot != "No options available":
+    new_booking = {
+        "name": name,
+        "email": email,
+        "phone": phone,
+        "park_name": selected_park,
+        "date": selected_date.strftime("%Y-%m-%d"),
+        "time_slot": selected_slot
+    }
+    log_df = pd.concat([log_df, pd.DataFrame([new_booking])], ignore_index=True)
+    log_df.to_csv("reservations_log.csv", index=False)
+
+
+    # Update schedule
+    schedule_df.loc[(schedule_df["park_name"] == selected_park) &
+                    (schedule_df["date"].dt.date == selected_date) &
+                    (schedule_df["time_slot"] == selected_slot), "status"] = "booked"
+    schedule_df.to_csv("Park_schedule.csv", index=False)
+
+
+    st.success(f"Reservation confirmed for {selected_park} on {selected_date} at {selected_slot}!")
+    st.info("You will receive a confirmation email shortly (mock only).")
+
+
+# ------------------- View Reservations -------------------
+st.expander("📂 View All Bookings").dataframe(schedule_df)
+
+
+# ------------------- Park Amenities Filter -------------------
+st.header("📊 Park Data Insights & Filter")
+st.subheader("🔍 Filter Parks by Amenities")
+
+
+filter_options = {
+    "BBQ": st.checkbox("Must have BBQ"),
+    "Basketball Court": st.checkbox("Must have Basketball Court"),
+    "Playground": st.checkbox("Must have Playground"),
+    "Restroom": st.checkbox("Must have Restroom"),
+    "Tennis Courts": st.checkbox("Must have Tennis Courts"),
+    "Volleyball": st.checkbox("Must have Volleyball"),
+    "Skate Park": st.checkbox("Must have Skate Park"),
+    "Soccer Field": st.checkbox("Must have Soccer Field"),
+    "Pickleball": st.checkbox("Must have Pickleball")
+}
+
+
+filtered_df = amenities_df.copy()
+for amenity, required in filter_options.items():
+    if required:
+        filtered_df = filtered_df[filtered_df[amenity] == True]
+
+
+st.dataframe(filtered_df)
+
+
+# ------------------- Park Issue Reporting -------------------
+st.subheader("🛠️ Park Issue Reporting")
+issue_description = st.text_area("Describe the issue you're experiencing:")
+issue_type = st.selectbox("Issue type:", ["Litter", "Damaged Equipment", "Graffiti", "Other"])
+issue_park = st.selectbox("Which park?", parks)
+
+
+if st.button("🛠️ Submit Report"):
+    st.success("Your issue has been submitted. Thank you for helping improve our parks!")
+
+
+# ------------------- Chatbot Assistant -------------------
+import openai
+from openai import OpenAI
+
+
+# New API client object
+client = OpenAI(api_key="my_api_key_here")
+
+
+# Chat UI
+user_input = st.chat_input("Ask a question about park rules, hours, or reservations...")
+
+
+if user_input:
+    with st.chat_message("user"):
+        st.write(user_input)
+
+
+    with st.chat_message("assistant"):
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "You are a helpful San Jose park assistant."},
+                {"role": "user", "content": user_input}
+            ]
+        )
+        st.write(response.choices[0].message.content)
+
