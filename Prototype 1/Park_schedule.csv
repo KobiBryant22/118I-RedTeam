@@ -1,0 +1,64 @@
+park_name,date,time_slot,status
+River Glen Park,2025-05-01,9AM-11AM,available
+River Glen Park,2025-05-01,11AM-1PM,booked
+River Glen Park,2025-05-01,1PM-3PM,available
+Roosevelt Park,2025-05-01,9AM-11AM,booked
+Roosevelt Park,2025-05-01,11AM-1PM,available
+Roosevelt Park,2025-05-01,1PM-3PM,booked
+Watson Park,2025-05-01,9AM-11AM,available
+Watson Park,2025-05-01,11AM-1PM,available
+Watson Park,2025-05-01,1PM-3PM,available
+Almaden Lake Park,2025-05-01,9AM-11AM,booked
+Almaden Lake Park,2025-05-01,11AM-1PM,available
+Almaden Lake Park,2025-05-01,1PM-3PM,available
+Happy Hollow Park,2025-05-01,9AM-11AM,available
+Happy Hollow Park,2025-05-01,11AM-1PM,available
+Happy Hollow Park,2025-05-01,1PM-3PM,available
+Emma Prusch Farm Park,2025-05-01,9AM-11AM,available
+Emma Prusch Farm Park,2025-05-01,11AM-1PM,available
+Emma Prusch Farm Park,2025-05-01,1PM-3PM,available
+Overfelt Gardens,2025-05-01,9AM-11AM,available
+Overfelt Gardens,2025-05-01,11AM-1PM,available
+Overfelt Gardens,2025-05-01,1PM-3PM,available
+Municipal Rose Garden,2025-05-01,9AM-11AM,available
+Municipal Rose Garden,2025-05-01,11AM-1PM,available
+Municipal Rose Garden,2025-05-01,1PM-3PM,available
+Willow Glen Park,2025-05-01,9AM-11AM,available
+Willow Glen Park,2025-05-01,11AM-1PM,available
+Willow Glen Park,2025-05-01,1PM-3PM,available
+Cataldi Park,2025-05-01,9AM-11AM,booked
+Cataldi Park,2025-05-01,11AM-1PM,booked
+Cataldi Park,2025-05-01,1PM-3PM,booked
+Almaden Community Center,2025-05-01,9AM-11AM,available
+Almaden Community Center,2025-05-01,11AM-1PM,available
+Almaden Community Center,2025-05-01,1PM-3PM,available
+Bascom Community Center,2025-05-01,9AM-11AM,available
+Bascom Community Center,2025-05-01,11AM-1PM,available
+Bascom Community Center,2025-05-01,1PM-3PM,available
+Berryessa Community Center,2025-05-01,9AM-11AM,available
+Berryessa Community Center,2025-05-01,11AM-1PM,available
+Berryessa Community Center,2025-05-01,1PM-3PM,available
+Camden Community Center,2025-05-01,9AM-11AM,available
+Camden Community Center,2025-05-01,11AM-1PM,available
+Camden Community Center,2025-05-01,1PM-3PM,available
+Cypress Community Center,2025-05-01,9AM-11AM,available
+Cypress Community Center,2025-05-01,11AM-1PM,available
+Cypress Community Center,2025-05-01,1PM-3PM,available
+Evergreen Community Center,2025-05-01,9AM-11AM,available
+Evergreen Community Center,2025-05-01,11AM-1PM,available
+Evergreen Community Center,2025-05-01,1PM-3PM,available
+Mayfair Community Center,2025-05-01,9AM-11AM,available
+Mayfair Community Center,2025-05-01,11AM-1PM,available
+Mayfair Community Center,2025-05-01,1PM-3PM,available
+Roosevelt Community Center,2025-05-01,9AM-11AM,available
+Roosevelt Community Center,2025-05-01,11AM-1PM,available
+Roosevelt Community Center,2025-05-01,1PM-3PM,available
+Seven Trees Community Center,2025-05-01,9AM-11AM,available
+Seven Trees Community Center,2025-05-01,11AM-1PM,available
+Seven Trees Community Center,2025-05-01,1PM-3PM,available
+Southside Community Center,2025-05-01,9AM-11AM,available
+Southside Community Center,2025-05-01,11AM-1PM,available
+Southside Community Center,2025-05-01,1PM-3PM,available
+Willow Glen Community Center,2025-05-01,9AM-11AM,available
+Willow Glen Community Center,2025-05-01,11AM-1PM,available
+Willow Glen Community Center,2025-05-01,1PM-3PM,available

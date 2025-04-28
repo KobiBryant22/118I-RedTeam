@@ -1,0 +1,5 @@
+name,email,phone,park_name,date,time_slot
+Trung Nguyen,trung.k.nguyen@sjsu.edu,5102588237,Roosevelt Park,2025-04-15,9AM-11AM
+Kien Nguyen,kiennguyen2003@yahoo.com,5102588237,Roosevelt Park,2025-04-15,11AM-1PM
+park_name,date,time_slot,status,,
+Caden Liang,,,River Glen Park,2025-05-01,11AM-1PM
